@@ -6,7 +6,8 @@
 
 Recipe Manager platform includes APIs for creating, listing, updating and deleting recipes within the specified rules. The recipes created are stored in the H2 in memory database. Among the recipes created, dynamic searches can be made according to portion size, recipe content,  dish type. Hibernate is used as JPA implementation. Validations are controlled with javax validations and annotations. The application can also be used on container platforms by following the instructions below. Create api works as post and if successful, 201 http code is returned. Update api works as put and if it is successful, 200 http code is returned. Delete api works as delete and if it is successful, 200 http code is returned. The listing api works as get and if it is successful, 200 http code is returned. Errors are caught at the controller level with controller advice. For the listing api, Criteria Builder is used for dynamic querying.
 
-![img.png](images/hlarchitecture.png)
+![](images/hlarchitecture.png)
+
 
 ## Used Technical Stack
 
@@ -82,7 +83,7 @@ Tests have been written and executed to cover almost all classes and methods.
   
    ![](images/h2dbui.png)
 
-###APIs Usage
+### APIs Usage
 * `/addRecipe`
   
   The **addRecipe** API create a food recipe. After the Add API checks certain rules, it adds the recipe to the database.
@@ -143,7 +144,7 @@ _Sample GET Requests:_
 http://localhost:8080/recipes  -- Get All Recipes
 http://localhost:8080/recipes?id=1 --Get Recipes By ID
 http://localhost:8080/recipes?maxPortionSize=5&minPortionSize=2 --Recipes filter by portion size
-http://localhost:8080/recipes?cookInstruction=meat&maxPortionSize=5 -- filter with portionsize and  get recipes that contain meat 
+http://localhost:8080/recipes?cookInstruction=meat&maxPortionSize=5 -- filter with portion size and  get recipes that contain meat 
 ```
 ![img.png](images/getapi.png)
 

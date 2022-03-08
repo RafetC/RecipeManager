@@ -34,13 +34,15 @@ public class RecipeServiceImpl implements RecipeService {
     RecipeRepository recipeRepository;
 
     @Override
-    public Integer addRecipe(RecipeDto recipeDto) {
+    public RecipeDto addRecipe(RecipeDto recipeDto) {
 
         Recipe recipe = modelMapper.map(recipeDto, Recipe.class);
         mapRecipeDtoToRecipe(recipe, recipeDto);
         recipe.setCreateDate(getTimeSpampOfNow());
         recipeRepository.save(recipe);
-        return recipe.getId();
+        recipeDto.setId(recipe.getId());
+        recipeDto.setCreateDate(recipe.getCreateDate());
+        return recipeDto;
 
     }
 
@@ -62,19 +64,20 @@ public class RecipeServiceImpl implements RecipeService {
             recipeForUpdate.setUpdateDate(getTimeSpampOfNow());
             recipeRepository.save(recipeForUpdate);
             return true;
-        }).orElseThrow(() -> new RecipePlatformRuntimeException(ErrorCode.INVALID_RECIPE_DISH_TYPE));
+        }).orElseThrow(() -> new RecipePlatformRuntimeException(ErrorCode.INVALID_RECIPE_ID_FOR_UPDATE));
 
         return true;
     }
 
 
     @Override
-    public List<RecipeDto> searchRecipe(Optional<Object> maxPortionSize, Optional<Object> minPortionSize, Optional<Object> dishType, Optional<Object> cookInstruction) {
+    public List<RecipeDto> searchRecipe(Optional<Object> Id, Optional<Object> maxPortionSize, Optional<Object> minPortionSize, Optional<Object> dishType, Optional<Object> cookInstruction) {
         List<SearchCriteria> searchCriteria = new ArrayList<>();
         searchCriteria.add(new SearchCriteria("portionSize", "<", maxPortionSize));
         searchCriteria.add(new SearchCriteria("portionSize", ">", minPortionSize));
         searchCriteria.add(new SearchCriteria("dishType", ":", dishType));
         searchCriteria.add(new SearchCriteria("cookingInstructions", "%", cookInstruction));
+        searchCriteria.add(new SearchCriteria("id", ":", Id));
 
         List<Recipe> recipeList = recipeApi.searchRecipe(searchCriteria);
 
@@ -95,13 +98,14 @@ public class RecipeServiceImpl implements RecipeService {
 
     private void mapRecipeDtoToRecipe(Recipe recipe, RecipeDto recipeDto) {
         List<Ingredients> ingredientsList = new ArrayList<>();
-        for (int i = 0; i < recipeDto.getIngredients().size(); i++) {
-            Ingredients ingredient = new Ingredients(null, null, recipeDto.getIngredients().get(i));
-            ingredientsList.add(ingredient);
+        if (recipeDto.getIngredients() != null) {
+            for (int i = 0; i < recipeDto.getIngredients().size(); i++) {
+                Ingredients ingredient = new Ingredients(null, null, recipeDto.getIngredients().get(i));
+                ingredientsList.add(ingredient);
 
+            }
+            recipe.setIngredients(ingredientsList);
         }
-        recipe.setIngredients(ingredientsList);
-
     }
 
     public Timestamp getTimeSpampOfNow() {

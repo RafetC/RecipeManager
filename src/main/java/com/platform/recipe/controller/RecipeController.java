@@ -27,11 +27,15 @@ public class RecipeController {
 
     @ApiOperation(value = "Create Recipe", nickname = "Create Recipe", notes = "Create new recipe")
     @PostMapping("/addRecipe")
-    public ResponseEntity<Integer> createRecipe(@RequestBody @Valid RecipeRequest request) {
+    public ResponseEntity<RecipeResponse> createRecipe(@RequestBody @Valid RecipeRequest request) {
         RecipeDto recipeDto = modelMapper.map(request, RecipeDto.class);
 
-        Integer recipeId = recipeService.addRecipe(recipeDto);
-        ResponseEntity<Integer> response = new ResponseEntity<>(recipeId, HttpStatus.CREATED);
+        recipeDto = recipeService.addRecipe(recipeDto);
+        RecipeResponse recipeResponse = modelMapper.map(recipeDto, RecipeResponse.class);
+
+
+
+        ResponseEntity<RecipeResponse> response = new ResponseEntity<>(recipeResponse, HttpStatus.CREATED);
         return response;
 
     }
@@ -59,11 +63,11 @@ public class RecipeController {
 
     @ApiOperation(value = "Get recipes", nickname = "Get recipes", notes = "Get recipes")
     @GetMapping("/recipes")
-    public ResponseEntity<List<RecipeResponse>> getTrade(@RequestParam Optional<Object> maxPortionSize, @RequestParam Optional<Object> minPortionSize, @RequestParam Optional<Object> dishType, @RequestParam Optional<Object> cookInstruction) {
-        List<RecipeDto> tradeResponseDto = recipeService.searchRecipe(maxPortionSize, minPortionSize, dishType, cookInstruction);
+    public ResponseEntity<List<RecipeResponse>> getRecipes(@RequestParam Optional<Object> id,@RequestParam Optional<Object> maxPortionSize, @RequestParam Optional<Object> minPortionSize, @RequestParam Optional<Object> dishType, @RequestParam Optional<Object> cookInstruction) {
+        List<RecipeDto> recipeResponseDto = recipeService.searchRecipe(id,maxPortionSize, minPortionSize, dishType, cookInstruction);
 
 
-        List<RecipeResponse> recipeList = tradeResponseDto
+        List<RecipeResponse> recipeList = recipeResponseDto
                 .stream()
                 .map(rec -> modelMapper.map(rec, RecipeResponse.class))
                 .collect(Collectors.toList());

@@ -19,7 +19,7 @@ public class RecipeResponse {
     private String dishType;
     private Integer portionSize;
     private List<String> ingredients;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd‐MM‐yyyy HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm")
     private Timestamp createDate;
     private String cookingInstructions;
 }

@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
-@CheckDishType
 public class RecipeRequest {
+    @CheckDishType
     private String dishType;
     @Min(value = 1, message = "Portion size  should be 1 minimum")
     private Integer portionSize;

@@ -8,7 +8,7 @@ import com.platform.recipe.model.contract.RecipeRequest;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class DishTypeValidator implements ConstraintValidator<CheckDishType, RecipeRequest> {
+public class DishTypeValidator implements ConstraintValidator<CheckDishType, String> {
 
 
     @Override
@@ -17,11 +17,11 @@ public class DishTypeValidator implements ConstraintValidator<CheckDishType, Rec
     }
 
     @Override
-    public boolean isValid(RecipeRequest recipeRequest, ConstraintValidatorContext constraintValidatorContext) {
-        if (recipeRequest != null) {
-            if (recipeRequest.getDishType().equalsIgnoreCase("VEGAN") ||
-                    recipeRequest.getDishType().equalsIgnoreCase("VEGETERIAN") ||
-                    recipeRequest.getDishType().equalsIgnoreCase("MEAT")
+    public boolean isValid(String stringValue, ConstraintValidatorContext constraintValidatorContext) {
+        if (stringValue != null) {
+            if (stringValue.equalsIgnoreCase("VEGAN") ||
+                    stringValue.equalsIgnoreCase("VEGETERIAN") ||
+                    stringValue.equalsIgnoreCase("MEAT")
             )
                 return true;
 

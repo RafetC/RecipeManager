@@ -52,7 +52,7 @@ public class RecipeController {
 
     @ApiOperation(value = "Update Recipe", nickname = "Update Recipe", notes = "Update  existing recipe")
     @PutMapping("/updateRecipe")
-    public ResponseEntity<Boolean> updateRecipe(@RequestBody RecipeUpdateRequest recipeUpdateRequest) {
+    public ResponseEntity<Boolean> updateRecipe(@RequestBody @Valid  RecipeUpdateRequest recipeUpdateRequest) {
         RecipeDto recipeDto = modelMapper.map(recipeUpdateRequest, RecipeDto.class);
         Boolean updateRecipe = recipeService.updateRecipe(recipeDto);
         ResponseEntity<Boolean> response = new ResponseEntity<>(updateRecipe, HttpStatus.OK);

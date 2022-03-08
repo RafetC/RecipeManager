@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  mancala-app:
+    image: recipe
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8080:8080"
+

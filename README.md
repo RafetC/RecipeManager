@@ -24,6 +24,7 @@ Recipe Manager platform includes APIs for creating, listing, updating and deleti
 - Docker for containerization
 - ModelMapper for object mapping
 - Javax Validation for request validation
+- Logback Project
 
 ```
 

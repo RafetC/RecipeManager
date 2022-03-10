@@ -168,3 +168,36 @@ _Sample PUT Request:_
 ![img.png](images/update.png)
 
 ![img.png](images/h2update.png)
+
+### API Payload logging
+
+I used to logback project for logging request/response payload and 
+I implement file logging service . Logging infrastructure system is extensible
+system. Easily develop for Kafka integration or another LogMode. Logging system is running with aspect . 
+I used the @Around annotation for handle before and after method joinpoints.
+
+Example of a log for single Request/Respone
+
+```
+<ApiPayloadLog>
+<ApiUrl>/updateRecipe</ApiUrl>
+<MethodName>updateRecipe</MethodName>
+<MethodType>PUT</MethodType>
+<ThreadID>1</ThreadID>
+<StartTime>10-03-2022 at 11:31:50 CET</StartTime>
+<Parameters>[ {
+  "id" : 3,
+  "dishType" : "MEAT",
+  "portionSize" : 50,
+  "ingredients" : [ "2 Eggs", "Olive oil", "Butter", "Chicken" ],
+  "cookingInstructions" : "Updated"
+} ]</Parameters>
+<Output>{
+  "headers" : { },
+  "body" : true,
+  "statusCodeValue" : 200,
+  "statusCode" : "OK"
+}</Output>
+<EndTime>10-03-2022 at 11:31:50 CET</EndTime>
+</ApiPayloadLog>
+```

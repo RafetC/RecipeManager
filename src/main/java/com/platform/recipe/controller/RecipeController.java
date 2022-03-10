@@ -25,7 +25,7 @@ public class RecipeController {
     @Autowired
     public RecipeService recipeService;
 
-    @ApiOperation(value = "Create Recipe", nickname = "Create Recipe", notes = "Create new recipe")
+    @ApiOperation(value = "Add Recipe", nickname = "Add Recipe", notes = "This API accepts POST methods and can add new Recipe . If API execute successfully it returns 201 HTTP Code. It validates DishType ,Instructor and PortionSize. Recipe is saved on H2 in memory database")
     @PostMapping("/addRecipe")
     public ResponseEntity<RecipeResponse> createRecipe(@RequestBody @Valid RecipeRequest request) {
         RecipeDto recipeDto = modelMapper.map(request, RecipeDto.class);
@@ -40,7 +40,7 @@ public class RecipeController {
 
     }
 
-    @ApiOperation(value = "Delete Recipe", nickname = "Delete Recipe", notes = "Delete  existing recipe")
+    @ApiOperation(value = "Delete Recipe", nickname = "Delete Recipe", notes = "This API accepts DELETE Method and it deletes recipe by id from database. If it execute successfully api return 200 HTTP code. If it doesn't find related recipe api throw an exception for controller advice")
     @DeleteMapping("/deleteRecipe")
     public ResponseEntity<Boolean> deleteRecipe(@RequestBody @NotBlank Integer recipeId) {
 
@@ -50,7 +50,7 @@ public class RecipeController {
 
     }
 
-    @ApiOperation(value = "Update Recipe", nickname = "Update Recipe", notes = "Update  existing recipe")
+    @ApiOperation(value = "Update Recipe", nickname = "Update Recipe", notes = "This API accepts PUT methods and it updates related recipe . If it execute successfully it returns 200 HTTP Code.")
     @PutMapping("/updateRecipe")
     public ResponseEntity<Boolean> updateRecipe(@RequestBody @Valid  RecipeUpdateRequest recipeUpdateRequest) {
         RecipeDto recipeDto = modelMapper.map(recipeUpdateRequest, RecipeDto.class);
@@ -61,7 +61,7 @@ public class RecipeController {
     }
 
 
-    @ApiOperation(value = "Get recipes", nickname = "Get recipes", notes = "Get recipes")
+    @ApiOperation(value = "Get recipes", nickname = "Get recipes", notes = "This API accepts GET methods and it retrieve recipe list with dynamic queries. If it execute successfully api returns 200 HTTP code.")
     @GetMapping("/recipes")
     public ResponseEntity<List<RecipeResponse>> getRecipes(@RequestParam Optional<Object> id,@RequestParam Optional<Object> maxPortionSize, @RequestParam Optional<Object> minPortionSize, @RequestParam Optional<Object> dishType, @RequestParam Optional<Object> cookInstruction) {
         List<RecipeDto> recipeResponseDto = recipeService.searchRecipe(id,maxPortionSize, minPortionSize, dishType, cookInstruction);

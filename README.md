@@ -138,10 +138,10 @@ _Sample Response:_
 
 _Sample DELETE Request:_
 ```
-curl -X DELETE "http://localhost:8080/deleteRecipe" -H "accept: */*" -H "Content-Type: application/json" -d "2"
+curl -X DELETE "http://localhost:8080/deleteRecipe?recipeId=4" -H "accept: */*"
 ```
 
-![img.png](images/deleteapi.png)
+![img.png](images/deleteapi2.png)
 
 
 * `/recipes`

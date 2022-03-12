@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController("/recipePlatform")
 public class RecipeController {
     @Autowired
@@ -42,7 +43,7 @@ public class RecipeController {
 
     @ApiOperation(value = "Delete Recipe", nickname = "Delete Recipe", notes = "This API accepts DELETE Method and it deletes recipe by id from database. If it execute successfully api return 200 HTTP code. If it doesn't find related recipe api throw an exception for controller advice")
     @DeleteMapping("/deleteRecipe")
-    public ResponseEntity<Boolean> deleteRecipe(@RequestBody @NotBlank Integer recipeId) {
+    public ResponseEntity<Boolean> deleteRecipe(@RequestParam @NotBlank Integer recipeId) {
 
         Boolean deleteRecipe = recipeService.deleteRecipe(recipeId);
         ResponseEntity<Boolean> response = new ResponseEntity<>(deleteRecipe, HttpStatus.OK);

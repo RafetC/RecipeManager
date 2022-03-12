@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Recipe {
     @Column(name = "id")
     private Integer id;
     private String dishType;
+    private String dishName;
     private Integer portionSize;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "Recipe_Id")

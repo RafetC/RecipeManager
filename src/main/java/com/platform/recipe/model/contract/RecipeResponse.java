@@ -17,6 +17,7 @@ import java.util.List;
 public class RecipeResponse {
     private Integer id;
     private String dishType;
+    private String dishName;
     private Integer portionSize;
     private List<String> ingredients;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm")

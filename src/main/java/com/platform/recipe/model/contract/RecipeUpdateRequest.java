@@ -22,6 +22,8 @@ public class RecipeUpdateRequest {
     private Integer id;
     @CheckDishType
     private String dishType;
+    @NotBlank
+    private String dishName;
     @Min(value = 1, message = "Portion size  should be 1 minimum")
     private Integer portionSize;
     private List<String> ingredients;

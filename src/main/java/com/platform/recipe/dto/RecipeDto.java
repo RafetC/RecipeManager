@@ -19,6 +19,8 @@ public class RecipeDto {
     private Integer id;
     private String dishType;
     private Integer portionSize;
+    private String dishName;
+
     private List<String> ingredients;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd‐MM‐yyyy HH:mm")
     private Timestamp createDate;

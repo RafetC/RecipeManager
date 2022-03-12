@@ -333,7 +333,7 @@ public class RecipeApplicationTests {
 
 
     public RecipeUpdateRequest getUpdateRequest() {
-        return new RecipeUpdateRequest(3, "MEAT", 50, getSampleIngredientList(), "Updated");
+        return new RecipeUpdateRequest(3, "MEAT","Pizza", 50, getSampleIngredientList(), "Updated");
 
     }
 
@@ -344,6 +344,7 @@ public class RecipeApplicationTests {
         RecipeRequest recipe_data1 = new RecipeRequest(
 
                 "Vegan",
+                "Pizza",
                 3,
                 null,
 
@@ -355,6 +356,7 @@ public class RecipeApplicationTests {
         RecipeRequest recipe_data2 = new RecipeRequest(
 
                 "Meat",
+                "Pizza",
                 10,
                 getSampleIngredientList(),
 
@@ -367,6 +369,7 @@ public class RecipeApplicationTests {
         RecipeRequest recipe_data3 = new RecipeRequest(
 
                 "Vegeterian",
+                "Pizza",
                 3,
                 getSampleIngredientList1(),
 
@@ -378,6 +381,7 @@ public class RecipeApplicationTests {
         RecipeRequest recipe_data4 = new RecipeRequest(
 
                 "Vegeterian",
+                "Pizza",
                 12,
                 getSampleIngredientList2(),
 
@@ -395,6 +399,7 @@ public class RecipeApplicationTests {
         RecipeResponse recipe_data1 = new RecipeResponse(
                 1,
                 "Vegan",
+                "Pizza",
                 3,
                 null,
                 null,
@@ -407,6 +412,7 @@ public class RecipeApplicationTests {
         RecipeResponse recipe_data2 = new RecipeResponse(
                 1,
                 "Meat",
+                "Pizza",
                 10,
                 getSampleIngredientList(),
                 null,
@@ -419,6 +425,7 @@ public class RecipeApplicationTests {
         RecipeResponse recipe_data3 = new RecipeResponse(
                 3,
                 "Vegetable",
+                "Pizza",
                 3,
                 getSampleIngredientList1(),
                 null,
@@ -430,6 +437,7 @@ public class RecipeApplicationTests {
         RecipeResponse recipe_data4 = new RecipeResponse(
                 1,
                 "Vegetable",
+                "Pizza",
                 12,
                 getSampleIngredientList2(),
                 null,

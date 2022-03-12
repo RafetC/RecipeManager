@@ -59,6 +59,7 @@ public class RecipeServiceImpl implements RecipeService {
             recipeForUpdate.setCookingInstructions(updatedRecipe.getCookingInstructions());
             recipeForUpdate.setDishType(updatedRecipe.getDishType());
             recipeForUpdate.setPortionSize(updatedRecipe.getPortionSize());
+            recipeForUpdate.setDishName(updatedRecipe.getDishName());
             IntStream.range(0, recipeForUpdate.getIngredients().size())
                     .forEach(i -> recipeForUpdate.getIngredients().get(i).setName(updatedRecipe.getIngredients().get(i)));
             recipeForUpdate.setUpdateDate(getTimeSpampOfNow());

@@ -12,6 +12,7 @@ Recipe Manager platform includes APIs for creating, listing, updating and deleti
 ## Used Technical Stack
 
 ```
+------Back End ------
 - Java 11
 - Springboot 2.5.2
 - Maven 3.6.3
@@ -25,6 +26,12 @@ Recipe Manager platform includes APIs for creating, listing, updating and deleti
 - ModelMapper for object mapping
 - Javax Validation for request validation
 - Logback Project
+
+------Front End ------
+- React 16
+- React-router-dom 5.1.2
+- Axios 0.19.2
+- Bootstrap 4.4.1
 
 ```
 
@@ -201,3 +208,68 @@ Example of a log for single Request/Respone
 <EndTime>10-03-2022 at 11:31:50 CET</EndTime>
 </ApiPayloadLog>
 ```
+
+## Recipe Platform Client
+The client application was developed with React 16 and the frontend components were developed using 
+the APIs developed in the backend.Axios is used in HTTP calls.
+
+### Installation
+```
+npm start
+```
+
+![img.png](images/recipeclientstart.png)
+
+### Usage 
+##### Add Recipe
+API validation errors encountered while adding a recipe are shown to the user on the screen.
+
+![img.png](images/addingvalidationerror.png)
+
+We can create a new recipe by filling in the relevant fields.
+
+![img.png](images/addrecipe1.png)
+
+![img.png](images/addrecipe2.png)
+
+#### Recipe List
+You can see all recipe list from the listing screen.You can filter recipes 
+with cooking instructions
+
+![img.png](images/recipelist1.png)
+
+![img.png](images/recipelist2.png)
+
+#### Recipe Detail
+When you click a recipe you can see detail of Recipe
+
+![img.png](images/recipedetail1.png)
+
+#### Receipt Update
+You can update recipe detail via update component
+
+![img.png](images/recipeupdate1.png)
+
+![img.png](images/recipeupdate2.png)
+
+![img.png](images/recipeupdate3.png)
+
+#### Recipe Delete
+
+You can delete recipe by recipe id with delete component
+
+![img.png](images/recipedelete1.png)
+
+![img.png](images/recipedelete2.png)
+
+### Recipe Update Validation
+
+Recipe validations are executing in update component
+
+![img.png](images/recipeupdatevalidation1.png)
+
+
+
+
+
+

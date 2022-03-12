@@ -51,6 +51,8 @@ Recipe Manager platform includes APIs for creating, listing, updating and deleti
 ## Installation
 1. Clone the repo
     >https://github.com/RafetC/RecipeManager.git
+    >cd RecipeManager
+    >git checkout recipe
 
 3. Import project in IntellJ IDEA
 

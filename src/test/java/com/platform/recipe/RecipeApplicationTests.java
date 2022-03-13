@@ -297,9 +297,9 @@ public class RecipeApplicationTests {
         Collections.sort(Arrays.asList(expectedMap.values().toArray(new RecipeResponse[testData.size()])), Comparator.comparing(RecipeResponse::getId));
 
         //delete by id
-        Boolean isDeleted = om.readValue(mockMvc.perform(delete("/deleteRecipe")
+        Boolean isDeleted = om.readValue(mockMvc.perform(delete("/deleteRecipe?recipeId=3")
                         .contentType("application/json")
-                        .content("3"))
+                )
                 .andDo(print())
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString(), Boolean.class);
         Assert.assertTrue(isDeleted);
@@ -333,7 +333,7 @@ public class RecipeApplicationTests {
 
 
     public RecipeUpdateRequest getUpdateRequest() {
-        return new RecipeUpdateRequest(3, "MEAT","Pizza", 50, getSampleIngredientList(), "Updated");
+        return new RecipeUpdateRequest(3, "MEAT", "Pizza", 50, getSampleIngredientList(), "Updated");
 
     }
 

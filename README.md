@@ -103,13 +103,10 @@ Tests have been written and executed to cover almost all classes and methods.
   _Sample POST Request:_
 ```
  {
-  "cookingInstructions": "Allow 30 to 45 minutes for oven and meat 
-  temperature to rise and continue to cook at 275 to 300 degrees until
-   done. ( usually 4-7 hours depending on size of meat ) ",
-  
+  "cookingInstructions": "Allow 30 to 45 minutes for oven and meat temperature to rise and continue to cook at 275 to 300",
+  "dishName": "Pizza",
   "dishType": "MEAT",
-  
-   "ingredients": [
+  "ingredients": [
     "meat","salt","water"
   ],
   "portionSize": 4
@@ -120,16 +117,15 @@ _Sample Response:_
 {
   "id": 1,
   "dishType": "MEAT",
+  "dishName": "Pizza",
   "portionSize": 4,
   "ingredients": [
     "meat",
     "salt",
     "water"
   ],
-  "createDate": "08.03.2022 20:14",
-  "cookingInstructions": "Allow 30 to 45 minutes for oven and meat 
-   temperature to rise and continue to cook at 275 to 300 degrees until 
-   done. ( usually 4-7 hours depending on size of meat ) "
+  "createDate": "13.03.2022 15:23",
+  "cookingInstructions": "Allow 30 to 45 minutes for oven and meat temperature to rise and continue to cook at 275 to 300"
 }
 ```
  
@@ -168,6 +164,7 @@ _Sample PUT Request:_
 {
   "id": 1,
   "dishType": "Meat",
+  "dishName": "Pizza",
   "portionSize": 4,
   "ingredients": [
     "string"
